@@ -14,8 +14,6 @@ npm install
 
 To run all tests
 
-### Jest way
-
 ```sh
 npm run test
 ```
