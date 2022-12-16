@@ -1,6 +1,6 @@
-# Gilded Rose
+# TypeScript Kata Starter
 
-This is the Gilded Rose kata in TypeScript.
+This is a basic TypeScript starter repository for doing katas.
 
 ## Getting started
 
@@ -9,19 +9,7 @@ Install dependencies
 ```sh
 npm install
 ```
-
-## Running app
-_You may need to install `ts-node`_
-
-```sh
-npx ts-node test/golden-master-text-test.ts
-```
-
-Or with number of days as args:
-```sh
-npx ts-node test/golden-master-text-test.ts 10
-```
-
+6
 ## Running tests
 
 To run all tests

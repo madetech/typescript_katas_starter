@@ -1,7 +1,7 @@
 {
-  "name": "typescript-katas-template",
+  "name": "typescript-katas-starter",
   "version": "1.0.0",
-  "description": "TypeScript Katas Template",
+  "description": "TypeScript Katas Starter",
   "scripts": {
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
