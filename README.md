@@ -1,6 +1,13 @@
-# TypeScript Kata Starter
+# TypeScript Katas Starter
 
-This is a basic TypeScript starter repository for doing katas.
+This is a basic starter repository for doing TypeScript katas with tests using [Jest](https://jestjs.io/docs/getting-started). 
+
+- Write your kata solutions in the `app` directory.
+- Write test files in the `tests` directory.
+
+## Suggested Katas
+
+[Made Tech Katas](https://learn.madetech.com/katas/)
 
 ## Getting started
 
@@ -24,3 +31,12 @@ To run all tests in watch mode
 npm run test:watch
 ```
 
+To run one test
+```sh
+npm run test <testname>
+```
+
+E.g.
+```sh
+npm run test subtract
+```
