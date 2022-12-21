@@ -1,6 +1,6 @@
 # TypeScript Katas Starter
 
-This is a basic starter repository for doing TypeScript katas with tests using [Jest](https://jestjs.io/docs/getting-started). 
+This is a basic starter repository for doing katas in TypeScript, with tests using [Jest](https://jestjs.io/docs/getting-started). 
 
 - Write your kata solutions in the `app` directory.
 - Write test files in the `tests` directory.
