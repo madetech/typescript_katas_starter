@@ -7,7 +7,7 @@ This is a basic starter repository for doing katas in TypeScript, with tests usi
 
 ## Suggested Katas
 
-[Made Tech Katas](https://learn.madetech.com/katas/)
+[Made Tech Katas](https://learn.madetech.com/technology/katas/)
 
 ## Getting started
 
