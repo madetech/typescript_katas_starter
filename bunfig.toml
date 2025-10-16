@@ -1,0 +1,7 @@
+tsconfig = "tsconfig.json"
+
+[test]
+# Use the project root as the test root; Bun will discover **/*.test.ts and **/*.spec.ts automatically.
+root = "."
+# Uncomment to enable coverage via Bun (optional)
+# coverage = true

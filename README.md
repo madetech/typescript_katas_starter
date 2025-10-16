@@ -1,42 +1,45 @@
-# TypeScript Katas Starter
+# TypeScript Katas Starter (Bun only)
 
-This is a basic starter repository for doing katas in TypeScript, with tests using [Jest](https://jestjs.io/docs/getting-started). 
+This repository runs entirely with Bun — no Node/Jest dependencies and no `npm install` required.
 
+- Write test files in the `tests` directory (e.g., `*.spec.ts`).
 - Write your kata solutions in the `app` directory.
-- Write test files in the `tests` directory.
 
 ## Suggested Katas
 
-[Made Tech Katas](https://learn.madetech.com/technology/katas/)
+[A list of Made Tech Katas](https://learn.madetech.com/technology/katas/)
 
-## Getting started
+You can find TDD learning resources on our [Learn Tech site](https://learn.madetech.com/technology/core-skills/tdd/). 
 
-Install dependencies
+## Prerequisites
+- Install Bun: https://bun.com/docs/installation
+  - Via script (see the Bun website for latest): `curl -fsSL https://bun.sh/install | bash`
+  - npm (the last `npm` command you'll ever need!) - `npm install -g bun`
+  - macOS (Homebrew): `brew install oven-sh/bun/bun`
+  - Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`
 
+## Running tests (Bun)
+- Run all tests
 ```sh
-npm install
+bun test
 ```
 
-## Running tests
-
-To run all tests
-
+- Watch mode
 ```sh
-npm run test
+bun test --watch
 ```
 
-To run all tests in watch mode
-
+- Run a single test file (pattern)
 ```sh
-npm run test:watch
+bun test subtract
 ```
 
-To run one test
+- Coverage
 ```sh
-npm run test <testname>
+bun test --coverage
 ```
 
-E.g.
-```sh
-npm run test subtract
-```
+## Notes
+- Bun uses tsconfig.json via bunfig.toml, including the `@/*` alias → `app/*`.
+- No npm dependencies are required for testing; `package.json` has no devDependencies.
+- Bun's test runner is similar to Jest but has some differences; see https://bun.sh/docs/api/test for details.
