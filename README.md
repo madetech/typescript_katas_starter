@@ -14,7 +14,7 @@ You can find TDD learning resources on our [Learn Tech site](https://learn.madet
   - Via script (see the Bun website for latest): `curl -fsSL https://bun.sh/install | bash`
   - npm (the last `npm` command you'll ever need!) - `npm install -g bun`
   - macOS (Homebrew): `brew install oven-sh/bun/bun`
-  - Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`
+  - Windows: `powershell -c "irm bun.sh/install.ps1|iex"`
 
 ## Running tests (Bun)
 - Run all tests
@@ -39,4 +39,4 @@ bun test --coverage
 
 ## Notes
 - Bun uses tsconfig.json via bunfig.toml, including the `@/*` alias → `app/*`.
-- Bun's test runner is similar to Jest but has some differences; see https://bun.sh/docs/api/test for details.
+- Bun's test runner is similar to Jest but has some differences; see https://bun.sh/docs/test for details.
