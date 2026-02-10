@@ -1,6 +1,4 @@
-# TypeScript Katas Starter (Bun only)
-
-This repository runs entirely with Bun — no Node/Jest dependencies and no `npm install` required.
+# TypeScript Katas Starter
 
 - Write test files in the `tests` directory (e.g., `*.spec.ts`).
 - Write your kata solutions in the `app` directory.
@@ -41,5 +39,4 @@ bun test --coverage
 
 ## Notes
 - Bun uses tsconfig.json via bunfig.toml, including the `@/*` alias → `app/*`.
-- No npm dependencies are required for testing; `package.json` has no devDependencies.
 - Bun's test runner is similar to Jest but has some differences; see https://bun.sh/docs/api/test for details.

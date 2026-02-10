@@ -7,12 +7,9 @@
     "sourceMap": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "app/*"
-      ]
-    }
+      "@/*": ["app/*"]
+    },
+    "types": ["bun-types", "bun-types/test-globals"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
