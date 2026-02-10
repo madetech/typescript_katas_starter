@@ -17,6 +17,12 @@ You can find TDD learning resources on our [Learn Tech site](https://learn.madet
   - Windows: `powershell -c "irm bun.sh/install.ps1|iex"`
 
 ## Running tests (Bun)
+
+- Install type definitions
+```sh
+bun install
+```
+
 - Run all tests
 ```sh
 bun test
