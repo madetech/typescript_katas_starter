@@ -16,3 +16,8 @@ run = "bun test --watch"
 [tasks.coverage]
 description = "Run all tests with a coverage report"
 run = "bun test --coverage"
+
+[tasks.new]
+description = "Scaffold a new kata: solution file plus a failing test"
+usage = 'arg "<name>" help="Kata name, e.g. bowling or roman-numerals"'
+run = "./scripts/new-kata.sh"

@@ -54,6 +54,7 @@ bun install && bun test
 | Watch | `mise run watch` | `bun test --watch` |
 | Coverage | `mise run coverage` | `bun test --coverage` |
 | By pattern | | `bun test subtract` |
+| New kata | `mise run new <name>` | |
 
 ## Notes
 
