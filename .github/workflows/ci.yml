@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  # These starters change rarely, so without a scheduled run the first sign of a
+  # broken toolchain would be someone hitting it mid-kata. Monthly is plenty.
+  schedule:
+    - cron: "0 6 1 * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Reads mise.toml, so CI uses exactly the versions you use locally.
+      - uses: jdx/mise-action@v4
+      - run: mise run test

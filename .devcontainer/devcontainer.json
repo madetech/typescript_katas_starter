@@ -1,0 +1,13 @@
+{
+  "name": "TypeScript Katas Starter",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "target": "toolchain"
+  },
+  "postCreateCommand": "mise trust && bun install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["oven.bun-vscode", "EditorConfig.EditorConfig"]
+    }
+  }
+}
