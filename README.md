@@ -54,7 +54,5 @@ bun install && bun test
   alias.
 - Bun's test runner is Jest-like but not identical; see
   https://bun.sh/docs/test.
-- `mise.toml` is the only place the Bun version is declared. CI, Docker and the
-  devcontainer all read it.
 - Windows: use WSL or the devcontainer — the tasks assume a POSIX shell.
 - Using this as a template? Delete `.github/dependabot.yml`.
