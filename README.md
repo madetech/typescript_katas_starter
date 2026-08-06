@@ -22,7 +22,9 @@ mise trust && mise install && mise run test
 asdf plugin add bun && asdf install
 ```
 
-**Container** — "Reopen in Container" in VS Code, or Codespaces. Or:
+**Container** — "Reopen in Container" in VS Code, or Codespaces. In JetBrains
+IDEs pick **Mount Sources**, not *Clone Sources*: the latter re-clones inside
+the container and needs git credentials there. Or run it directly:
 
 ```bash
 docker build -t typescript-katas . && docker run --rm typescript-katas
