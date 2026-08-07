@@ -1,13 +1,22 @@
 name: CI
 
 on:
+  # Only `main` on push. PR branches are covered by pull_request below, so
+  # listing both here would run every PR push twice.
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
   # These starters change rarely, so without a scheduled run the first sign of a
   # broken toolchain would be someone hitting it mid-kata. Monthly is plenty.
   schedule:
     - cron: "0 6 1 * *"
+
+# Supersede an in-flight run when the same ref is pushed again, rather than
+# leaving both to compete for runners.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
