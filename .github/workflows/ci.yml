@@ -23,6 +23,52 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      # mise prefers mise.toml, so a stale .tool-versions would break asdf users
+      # silently. Fail loudly instead.
+      - name: Check mise.toml and .tool-versions agree
+        run: |
+          python3 - <<'PY'
+          import pathlib, sys, tomllib
+
+          # asdf and mise disagree on a few tool names.
+          ALIASES = {"node": "nodejs"}
+
+          mise = tomllib.loads(pathlib.Path("mise.toml").read_text()).get("tools", {})
+
+          tv = {}
+          for line in pathlib.Path(".tool-versions").read_text().splitlines():
+              line = line.split("#", 1)[0].strip()
+              if line and len(line.split()) >= 2:
+                  name, version = line.split()[:2]
+                  tv[name] = version
+
+          def compatible(spec, actual):
+              # mise pins loosely ("3.13"), .tool-versions pins exactly ("3.13.14").
+              if spec in ("latest", "*"):
+                  return True
+              if actual == spec:
+                  return True
+              return (actual.startswith(spec)
+                      and len(actual) > len(spec)
+                      and actual[len(spec)] in ".+-")
+
+          problems = []
+          for tool, spec in mise.items():
+              if not isinstance(spec, str):
+                  continue
+              actual = tv.get(ALIASES.get(tool, tool), tv.get(tool))
+              if actual is None:
+                  print(f"note: {tool} is pinned in mise.toml but absent from .tool-versions")
+                  continue
+              if not compatible(spec, actual):
+                  problems.append(f"{tool}: mise.toml says {spec!r} but .tool-versions says {actual!r}")
+
+          for p in problems:
+              print(f"DRIFT: {p}")
+          sys.exit(1 if problems else 0)
+          PY
+
       # Reads mise.toml, so CI uses exactly the versions you use locally.
       - uses: jdx/mise-action@v4
       - run: mise run test
