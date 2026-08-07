@@ -23,9 +23,9 @@ asdf plugin add bun && asdf install
 ```
 
 **Container** — "Reopen in Container" in VS Code, or Codespaces. JetBrains IDEs
-offer two routes: *Clone Sources* is faster on macOS and Windows but clones
-inside the container, so it needs git credentials there and cannot reach a
-private repo; *Mount Sources* always works. Or run it directly:
+offer *Clone Sources* (faster on macOS and Windows, but git auth has to reach
+inside the container) and *Mount Sources* (slower, no auth needed). Or run it
+directly:
 
 ```bash
 docker build -t typescript-katas . && docker run --rm typescript-katas
