@@ -16,5 +16,8 @@
     "jetbrains": {
       "backend": "WebStorm"
     }
-  }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-idea,target=${containerWorkspaceFolder}/.idea,type=volume"
+  ]
 }
