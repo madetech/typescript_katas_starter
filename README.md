@@ -22,14 +22,18 @@ mise trust && mise install && mise run test
 asdf plugin add bun && asdf install
 ```
 
-**Container** — "Reopen in Container" in VS Code, or Codespaces. JetBrains IDEs
-offer *Clone Sources* (faster on macOS and Windows, but git auth has to reach
-inside the container) and *Mount Sources* (slower, no auth needed). Or run it
-directly:
+**Container** — "Reopen in Container" in VS Code, or Codespaces; JetBrains IDEs
+offer the same from the `devcontainer.json` gutter icon. Give your container
+runtime at least 4GB of memory — a smaller default will get the IDE language
+server killed mid-session. Or run the tests directly:
 
 ```bash
 docker build -t typescript-katas . && docker run --rm typescript-katas
 ```
+
+If `devcontainer.json` or the `Dockerfile` changes, rebuild the container
+("Dev Containers: Rebuild Container" in VS Code). Pulling alone will not pick
+up container changes.
 
 **Your own Bun** — [install it](https://bun.com/docs/installation), then:
 
