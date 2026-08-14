@@ -9,7 +9,7 @@ Write tests in `tests/` (`*.spec.ts`), solutions in `app/`.
 
 Any one of these.
 
-**mise** (recommended) — installs the pinned Bun:
+**mise** (recommended) — installs the pinned Node:
 
 ```bash
 curl https://mise.run | sh
@@ -19,7 +19,7 @@ mise trust && mise install && mise run test
 **asdf** — plugins are not added automatically:
 
 ```bash
-asdf plugin add bun && asdf install
+asdf plugin add nodejs && asdf install
 ```
 
 **Container** — "Reopen in Container" in VS Code, or Codespaces; JetBrains IDEs
@@ -35,31 +35,28 @@ If `devcontainer.json` or the `Dockerfile` changes, rebuild the container
 ("Dev Containers: Rebuild Container" in VS Code). Pulling alone will not pick
 up container changes.
 
-**Your own Bun** — [install it](https://bun.com/docs/installation), then:
+**Your own Node** — 24+, then:
 
 ```bash
-bun install && bun test
+npm install && npx vitest run
 ```
-
-- Script: `curl -fsSL https://bun.sh/install | bash`
-- npm (the last `npm` command you'll ever need!): `npm install -g bun`
-- macOS: `brew install oven-sh/bun/bun`
-- Windows: `powershell -c "irm bun.sh/install.ps1|iex"`
 
 ## Commands
 
 | | mise | direct |
 | --- | --- | --- |
-| Test | `mise run test` | `bun test` |
-| Watch | `mise run watch` | `bun test --watch` |
-| Coverage | `mise run coverage` | `bun test --coverage` |
-| By pattern | | `bun test subtract` |
+| Test | `mise run test` | `npx vitest run` |
+| Watch | `mise run watch` | `npx vitest` |
+| Coverage | `mise run coverage` | `npx vitest run --coverage` |
+| Type-check | `mise run typecheck` | `npx tsc --noEmit` |
+| One file | | `npx vitest run sum` |
 
 ## Notes
 
-- Bun reads `tsconfig.json` via `bunfig.toml`, including the `@/*` → `app/*`
-  alias.
-- Bun's test runner is Jest-like but not identical; see
-  https://bun.sh/docs/test.
+- Tests use [Vitest](https://vitest.dev). `globals: true` in `vitest.config.ts`
+  is why `describe`/`it`/`expect` need no import.
+- Tests import solutions as `@/sum`, aliased to `app/` in `vitest.config.ts`
+  and `tsconfig.json`. Both need to agree if you change it.
+- `mise run typecheck` runs `tsc`; Vitest itself does not type-check.
 - Windows: use WSL or the devcontainer — the tasks assume a POSIX shell.
 - Using this as a template? Delete `.github/dependabot.yml`.

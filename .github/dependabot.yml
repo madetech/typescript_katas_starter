@@ -3,7 +3,7 @@ version: 2
 # Monthly and grouped, so each repo gets at most a handful of PRs a year
 # rather than a steady trickle nobody reviews.
 updates:
-  - package-ecosystem: "bun"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "monthly"
