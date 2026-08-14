@@ -2,8 +2,7 @@
   "name": "TypeScript Katas Starter",
   "build": {
     "dockerfile": "../Dockerfile",
-    "context": "..",
-    "target": "toolchain"
+    "context": ".."
   },
   "postCreateCommand": "mise trust && bun install",
   "customizations": {

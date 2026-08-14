@@ -1,6 +1,9 @@
 # Toolchain is driven entirely by mise.toml — bump language versions there, never here.
 # This file is byte-identical in every Made Tech katas starter.
-FROM debian:bookworm-slim AS toolchain
+#
+# Deliberately a single stage. A multi-stage build would need `--target` in
+# devcontainer.json, and JetBrains' "Clone Sources" flow rejects that flag.
+FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -18,9 +21,6 @@ WORKDIR /workspace
 COPY mise.toml .tool-versions ./
 RUN mise trust && mise install
 
-# The devcontainer stops at `toolchain` above and bind-mounts your working copy.
-# The default stage below bakes the code in, so `docker run` runs the katas' tests.
-FROM toolchain AS test
-COPY . .
-RUN mise trust
+# Your working copy is supplied at runtime: bind-mounted by the devcontainer, or
+# by `docker run -v "$PWD":/workspace` (see the README).
 CMD ["mise", "run", "test"]

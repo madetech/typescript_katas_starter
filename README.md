@@ -28,7 +28,7 @@ runtime at least 4GB of memory — a smaller default will get the IDE language
 server killed mid-session. Or run the tests directly:
 
 ```bash
-docker build -t typescript-katas . && docker run --rm typescript-katas
+docker build -t typescript-katas . && docker run --rm -v "$PWD":/workspace typescript-katas
 ```
 
 If `devcontainer.json` or the `Dockerfile` changes, rebuild the container
