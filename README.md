@@ -1,48 +1,65 @@
 # TypeScript Katas Starter
 
-- Write test files in the `tests` directory (e.g., `*.spec.ts`).
-- Write your kata solutions in the `app` directory.
+Write tests in `tests/` (`*.spec.ts`), solutions in `app/`.
 
-## Suggested Katas
+[Made Tech katas](https://learn.madetech.com/technology/katas/) ·
+[TDD resources](https://learn.madetech.com/technology/core-skills/tdd/)
 
-[A list of Made Tech Katas](https://learn.madetech.com/technology/katas/)
+## Setup
 
-You can find TDD learning resources on our [Learn Tech site](https://learn.madetech.com/technology/core-skills/tdd/). 
+Any one of these.
 
-## Prerequisites
-- Install Bun: https://bun.com/docs/installation
-  - Via script (see the Bun website for latest): `curl -fsSL https://bun.sh/install | bash`
-  - npm (the last `npm` command you'll ever need!) - `npm install -g bun`
-  - macOS (Homebrew): `brew install oven-sh/bun/bun`
-  - Windows: `powershell -c "irm bun.sh/install.ps1|iex"`
+**mise** (recommended) — installs the pinned Bun:
 
-## Running tests (Bun)
-
-- Install type definitions
-```sh
-bun install
+```bash
+curl https://mise.run | sh
+mise trust && mise install && mise run test
 ```
 
-- Run all tests
-```sh
-bun test
+**asdf** — plugins are not added automatically:
+
+```bash
+asdf plugin add bun && asdf install
 ```
 
-- Watch mode
-```sh
-bun test --watch
+**Container** — "Reopen in Container" in VS Code, or Codespaces; JetBrains IDEs
+offer the same from the `devcontainer.json` gutter icon. Give your container
+runtime at least 4GB of memory — a smaller default will get the IDE language
+server killed mid-session. Or run the tests directly:
+
+```bash
+docker build -t typescript-katas . && docker run --rm -v "$PWD":/workspace typescript-katas
 ```
 
-- Run a single test file (pattern)
-```sh
-bun test subtract
+If `devcontainer.json` or the `Dockerfile` changes, rebuild the container
+("Dev Containers: Rebuild Container" in VS Code). Pulling alone will not pick
+up container changes.
+
+**Your own Bun** — [install it](https://bun.com/docs/installation), then:
+
+```bash
+bun install && bun test
 ```
 
-- Coverage
-```sh
-bun test --coverage
-```
+- Script: `curl -fsSL https://bun.sh/install | bash`
+- npm (the last `npm` command you'll ever need!): `npm install -g bun`
+- macOS: `brew install oven-sh/bun/bun`
+- Windows: `powershell -c "irm bun.sh/install.ps1|iex"`
+
+## Commands
+
+| | mise | direct |
+| --- | --- | --- |
+| Test | `mise run test` | `bun test` |
+| Watch | `mise run watch` | `bun test --watch` |
+| Coverage | `mise run coverage` | `bun test --coverage` |
+| By pattern | | `bun test subtract` |
 
 ## Notes
-- Bun uses tsconfig.json via bunfig.toml, including the `@/*` alias → `app/*`.
-- Bun's test runner is similar to Jest but has some differences; see https://bun.sh/docs/test for details.
+
+- Bun reads `tsconfig.json` via `bunfig.toml`, including the `@/*` → `app/*`
+  alias.
+- Bun's test runner is Jest-like but not identical; see
+  https://bun.sh/docs/test.
+- Windows: use WSL or the devcontainer — the tasks assume a POSIX shell.
+- Using this as a template? Delete `.github/dependabot.yml`.

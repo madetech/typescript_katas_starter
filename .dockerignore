@@ -1,0 +1,10 @@
+# Keep host-built artefacts out of the image — they are the wrong platform.
+.git
+.github
+.devcontainer
+.DS_Store
+.idea
+Dockerfile
+README.md
+node_modules/
+coverage

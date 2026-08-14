@@ -1,0 +1,22 @@
+{
+  "name": "TypeScript Katas Starter",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "postCreateCommand": "mise trust && bun install && ln -sf \"$(mise which bun)\" /usr/local/bin/bun",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oven.bun-vscode",
+        "EditorConfig.EditorConfig"
+      ]
+    },
+    "jetbrains": {
+      "backend": "WebStorm"
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-idea,target=${containerWorkspaceFolder}/.idea,type=volume"
+  ]
+}
