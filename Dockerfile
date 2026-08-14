@@ -19,13 +19,9 @@ RUN curl -fsSL https://mise.run | sh
 
 WORKDIR /workspace
 COPY mise.toml .tool-versions ./
-# The global default matters: `dotnet`, `python` etc. on PATH are mise shims,
-# and a shim resolves its version from config in scope of the *current working
-# directory*. IDE language servers shell out from outside the workspace (VS
-# Code's C# BuildHost runs from ~/.vscode-server), where no project config
-# applies, so the shim would fail and the IDE would conclude no SDK exists.
-# Seeding the global default from this project's own resolved versions makes
-# shims work from any directory. A project config still takes precedence.
+# Also seed a global default: shims resolve their version from the current
+# directory's config, and IDE language servers run outside the repo. A project
+# config still takes precedence.
 RUN mise trust && mise install \
  && mise use -g $(mise ls --current --offline | awk '{print $1 "@" $2}' | tr '\n' ' ')
 
