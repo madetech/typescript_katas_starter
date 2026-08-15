@@ -1,3 +1,3 @@
 # For asdf users. mise reads mise.toml in preference to this file —
 # keep the two in step if you change a version.
-bun 1.3.9
+nodejs 24.11.0

@@ -4,11 +4,11 @@
     "dockerfile": "../Dockerfile",
     "context": ".."
   },
-  "postCreateCommand": "mise trust && bun install && ln -sf \"$(mise which bun)\" /usr/local/bin/bun",
+  "postCreateCommand": "mise trust && npm install && ln -sf \"$(mise which node)\" /usr/local/bin/node",
   "customizations": {
     "vscode": {
       "extensions": [
-        "oven.bun-vscode",
+        "vitest.explorer",
         "EditorConfig.EditorConfig"
       ]
     },
